@@ -14,6 +14,7 @@ const User = require('./models/User')
 
 // import routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 // import controller
 const ToughtController = require('./controllers/ToughtController')
@@ -68,6 +69,7 @@ app.use((req,res,next) => {
 
 //rotas
 app.use('toughts', toughtsRoutes)
+app.use('/', authRoutes)
 
 app.get('/', ToughtController.showToughts)
 
