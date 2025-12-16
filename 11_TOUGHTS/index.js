@@ -67,8 +67,8 @@ app.use((req,res,next) => {
     next()
 })
 
-//rotas
-app.use('toughts', toughtsRoutes)
+// Routes
+app.use('/toughts', toughtsRoutes)
 app.use('/', authRoutes)
 
 app.get('/', ToughtController.showToughts)
