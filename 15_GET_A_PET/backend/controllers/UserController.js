@@ -1,8 +1,9 @@
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 module.exports = class UserController {
     static async register(req,res) {
-        const {name, email, phone, passwword, confirmpassword} = req.body
+        const {name, email, phone, password, confirmpassword} = req.body
 
         // validations
         if(!name) {
@@ -17,7 +18,7 @@ module.exports = class UserController {
             res.status(422).json({message: 'O telefone é obrigatorio!'})
             return
         }
-        if(!passwword) {
+        if(!password) {
             res.status(422).json({message: 'A senha é obrigatoria!'})
             return
         }
@@ -26,7 +27,7 @@ module.exports = class UserController {
             return
         }
 
-        if(passwword !== confirmpassword) {
+        if(password !== confirmpassword) {
             res.status(422).json({message: 'A senha e a confirmação de senha tem ser iguais!'})
             return
         }
@@ -37,6 +38,25 @@ module.exports = class UserController {
         if(userExists) {
             res.status(422).json({message: 'Por favor, utilize outro email!'})
             return
+        }
+
+        // create a password
+        const salt = await bcrypt.genSalt(12)
+        const passwordHash = await bcrypt.hash(password, salt)
+
+        // create a user
+        const user = new User({
+            name,
+            email,
+            phone,
+            password: passwordHash
+        })
+
+        try {
+            const newUser = await user.save()
+            res.status(201).json({message: 'Usuario criado!', newUser})
+        } catch (error) {
+            res.status(500).json({message: error})
         }
     }
 }
