@@ -5,23 +5,23 @@ const Pet = mongoose.model(
     'Pet',
     new Schema ({
         name: {
-            typeof: String,
+            type: String,
             required: true
         },
         age: {
-            typeof: Number,
+            type: Number,
             required: true
         },
         weight: {
-            typeof: Number,
+            type: Number,
             required: true
         },
         color: {
-            typeof: String,
+            type: String,
             required: true
         },
         images: {
-            typeof: Array,
+            type: Array,
             required: true
         },
         available: {

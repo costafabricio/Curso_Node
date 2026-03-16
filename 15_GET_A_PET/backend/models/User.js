@@ -5,22 +5,22 @@ const User = mongoose.model(
     'User',
     new Schema ({
         name: {
-            typeof: String,
+            type: String,
             required: true
         },
         email: {
-            typeof: String,
+            type: String,
             required: true
         },
         password: {
-            typeof: String,
+            type: String,
             required: true
         },
         image: {
-            typeof: String
+            type: String
         },
         phone: {
-            typeof: String,
+            type: String,
             required: true
         }
     },{timestamps: true})
