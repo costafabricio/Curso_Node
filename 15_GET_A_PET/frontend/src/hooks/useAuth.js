@@ -26,10 +26,27 @@ export default function useAuth() {
            const response = await api.post('/users/register', user)
            const data = response.data
 
-             await authUser(data)
+            await authUser(data)
         } catch (error) {
             msgText = error.response.data.message
             msgType = 'error'    
+        }
+
+        setFlashMessage(msgText, msgType)
+    }
+
+    async function login(user) {
+        let msgText = 'Login realizado com sucesso!'
+        let msgType = 'success'
+
+        try {
+           const response = await api.post('/users/login', user)
+           const data = response.data
+
+           await authUser(data)
+        } catch (error) {
+            msgText = error.response.data.message
+            msgType = 'error'
         }
 
         setFlashMessage(msgText, msgType)
@@ -55,5 +72,5 @@ export default function useAuth() {
         setFlashMessage(msgText, msgType)
     }
 
-    return { authenticated, register, logout }
+    return { authenticated, register, logout, login }
 }
