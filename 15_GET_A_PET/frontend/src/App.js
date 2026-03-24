@@ -14,6 +14,7 @@ import Profile from "./components/pages/User/Profile";
 
 /* context */
 import { UserProvider } from "./context/UserContext"; 
+import MyPets from "./components/pages/Pet/MyPets";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/user/profile" element={<Profile />} />
+                  <Route path="/pet/mypets" element={<MyPets />} />
                 </Routes>
              </Container>
            <Footer/>
