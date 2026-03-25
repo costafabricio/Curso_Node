@@ -25,7 +25,7 @@ const Pet = mongoose.model(
             required: true
         },
         available: {
-            typeof: Boolean
+            type: Boolean
         },
         user: Object,
         adopter: Object

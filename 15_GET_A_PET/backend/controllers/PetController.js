@@ -135,7 +135,7 @@ module.exports = class PetController {
 
         // check if logged in user registered the pet
         const token = getToken(req)
-        const user = getUserByToken(token)
+        const user = await getUserByToken(token)
 
         if(pet.user._id.toString() !== user._id.toString()) {
             res.status(422).json({message: 'Houve um problema em processar a sua solicitação, tente novamente mais tarde!'})
@@ -165,7 +165,7 @@ module.exports = class PetController {
 
         // check if logged in user registered the pet
         const token = getToken(req)
-        const user = getUserByToken(token)
+        const user = await getUserByToken(token)
 
         if(pet.user._id.toString() !== user._id.toString()) {
             res.status(422).json({message: 'Houve um problema em processar a sua solicitação, tente novamente mais tarde!'})
@@ -229,7 +229,7 @@ module.exports = class PetController {
 
         // check if user registered the pet
         const token = getToken(req)
-        const user = getUserByToken(token)
+        const user = await getUserByToken(token)
 
         if(pet.user._id.equals(user._id)) {
             res.status(422).json({message: 'Voce nao pode agendar uma visita com o seu proprio pet!'})
@@ -268,7 +268,7 @@ module.exports = class PetController {
 
         // check if logged in user registered the pet
         const token = getToken(req)
-        const user = getUserByToken(token)
+        const user = await getUserByToken(token)
 
         if(pet.user._id.toString() !== user._id.toString()) {
             res.status(422).json({message: 'Houve um problema em processar a sua solicitação, tente novamente mais tarde!'})

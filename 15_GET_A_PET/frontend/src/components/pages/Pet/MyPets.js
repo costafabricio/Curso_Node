@@ -9,12 +9,12 @@ import {Link} from 'react-router-dom'
 import RoundedImage from '../../layout/RoundedImage'
 
 /* hooks */
-import useFlaseMessage from '../../../hooks/useFlashMessage'
+import useFlashMessage from '../../../hooks/useFlashMessage'
 
 function MyPets() {
     const [pets, setPets] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
-    const {setFlaseMessage} = useFlaseMessage()
+    const {setFlashMessage} = useFlashMessage()
 
     useEffect(() => {
         api.get('/pets/mypets', {
@@ -42,7 +42,7 @@ function MyPets() {
             return err.response.data
         })
 
-        setFlaseMessage(data.message, msgType)
+        setFlashMessage(data.message, msgType)
     }
 
     return(
