@@ -40,7 +40,9 @@ function PetDetails() {
           {pet.name && (
             <section className={styles.pet_details_container}>
                 <div className={styles.pet_details_header}>
-                    <h1>Conhecendo o Pet: {pet.name}</h1>
+                    <h1>Conhecendo o Pet: 
+                        <span className={styles.pet_title}> {pet.name}</span>
+                    </h1>
                     <p>Se tiver interesse, marque uma visita para conhece-lo</p>
                 </div>
                 <div className={styles.pet_images}>
@@ -57,6 +59,15 @@ function PetDetails() {
                 </p>
                 <p>
                     <span className='bold'>Idade:</span> {pet.age} anos    
+                </p>
+                <p>
+                    <span className='bold'>Sexo:</span> {pet.sex}    
+                </p>
+                <p>
+                    <span className='bold'>Cor:</span> {pet.color}    
+                </p>
+                <p>
+                    <span className='bold'>Estado:</span> {pet.state}    
                 </p>
                 {token ? (
                     <button onClick={schedule}>Solicitar uma visita</button>
