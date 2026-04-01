@@ -16,6 +16,10 @@ const Pet = mongoose.model(
             type: Number,
             required: true
         },
+        state: {
+            type: String,
+            required: true
+        },
         sex: {
             type: String,
             required: true

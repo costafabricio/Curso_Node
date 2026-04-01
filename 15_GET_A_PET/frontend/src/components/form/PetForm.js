@@ -9,6 +9,7 @@ function PetForm({handleSubmit, petData, btnText}) {
     const [preview, setPreview] = useState([])
     const colors = ['Branco', 'Preto', 'Cinza', 'Caramelo', 'Mesclado']
     const petSex = ['Macho', 'Femea']
+    const petState = ['São Paulo (SP)', 'Minas Gerais (MG)', 'Rio de Janeiro (RJ)', 'Amazonas (AM)', 'Rio Grande do Sul (RS)']
 
     function onFileChange(e) {
         setPreview(Array.from(e.target.files))
@@ -25,6 +26,10 @@ function PetForm({handleSubmit, petData, btnText}) {
 
     function handleSex(e) {
        setPet({...pet, sex: e.target.options[e.target.selectedIndex].text})
+    }
+
+    function handleState(e) {
+       setPet({...pet, state: e.target.options[e.target.selectedIndex].text})
     }
 
     function submit(e) {
@@ -81,6 +86,13 @@ function PetForm({handleSubmit, petData, btnText}) {
               placeholder="Digite o peso"
               handleOnChange={handleChange}
               value={pet.weight || ''}
+             />
+            <Select
+               name="state"
+               text="Selecione o Estado"
+               options={petState}
+               handleOnChange={handleState}
+               value={pet.state || ''}
              />
             <Select
                name="sex"
