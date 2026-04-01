@@ -8,6 +8,7 @@ function PetForm({handleSubmit, petData, btnText}) {
     const [pet, setPet] = useState(petData || {})
     const [preview, setPreview] = useState([])
     const colors = ['Branco', 'Preto', 'Cinza', 'Caramelo', 'Mesclado']
+    const petSex = ['Macho', 'Femea']
 
     function onFileChange(e) {
         setPreview(Array.from(e.target.files))
@@ -20,6 +21,10 @@ function PetForm({handleSubmit, petData, btnText}) {
 
     function handleColor(e) {
         setPet({...pet, color: e.target.options[e.target.selectedIndex].text})
+    }
+
+    function handleSex(e) {
+       setPet({...pet, sex: e.target.options[e.target.selectedIndex].text})
     }
 
     function submit(e) {
@@ -77,7 +82,14 @@ function PetForm({handleSubmit, petData, btnText}) {
               handleOnChange={handleChange}
               value={pet.weight || ''}
              />
-             <Select
+            <Select
+               name="sex"
+               text="Selecione o sexo"
+               options={petSex}
+               handleOnChange={handleSex}
+               value={pet.sex || ''}
+             />
+            <Select
                name="color"
                text="Selecione a cor"
                options={colors}

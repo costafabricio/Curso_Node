@@ -8,7 +8,7 @@ const ObjectId = require('mongoose').Types.ObjectId
 module.exports = class PetController {
     // create a pet
     static async create(req,res) {
-      const {name, age, weight, color} = req.body
+      const {name, age, weight, sex, color} = req.body
 
       const images = req.files
 
@@ -29,6 +29,10 @@ module.exports = class PetController {
         res.status(422).json({message: 'O peso é obrigatorio!'})
         return
       }
+      if(!sex) {
+        res.status(422).json({message: 'O sexo é obrigatoria!'})
+        return
+      }
       if(!color) {
         res.status(422).json({message: 'A cor é obrigatoria!'})
         return
@@ -47,6 +51,7 @@ module.exports = class PetController {
         name,
         age,
         weight,
+        sex,
         color,
         available,
         images: [],
@@ -150,7 +155,7 @@ module.exports = class PetController {
     static async updatePet(req,res) {
         const id = req.params.id
 
-        const {name, age, weight, color, available} = req.body
+        const {name, age, weight, sex, color, available} = req.body
 
         const images = req.files
 
@@ -192,6 +197,13 @@ module.exports = class PetController {
         return
       }else {
         updatedData.weight = weight
+      }
+
+    if(!sex) {
+        res.status(422).json({message: 'O sexo é obrigatoria!'})
+        return
+      }else {
+        updatedData.sex = sex
       }
 
       if(!color) {
@@ -236,7 +248,7 @@ module.exports = class PetController {
         // check if user has already scheduled a visit
         if(pet.adopter){
             if(pet.adopter._id.equals(user._id)){
-                res.status(422).json({message: 'Voce ja agendou uma visita para este pet!'})
+               return res.status(422).json({message: 'Voce ja agendou uma visita para este pet!'})
             }
         }
 
