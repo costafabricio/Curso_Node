@@ -13,10 +13,12 @@ function Navbar() {
 
     return(
         <nav className={styles.navbar}>
-            <div className={styles.navbar_logo}>
+            <Link to='/'>
+              <div className={styles.navbar_logo}>
                 <img src={Logo} alt="Get A Pet" />
                 <h2>Get A Pet</h2>
-            </div>
+              </div>
+            </Link>
             <ul>
                 <li>
                     <Link to="/"> Adotar </Link>

@@ -1,9 +1,29 @@
 .pet_home_header {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 2em;
 }
 
 .pet_home_header h1 {
     margin-bottom: 0.3em;
+}
+
+.button {
+   text-decoration: none;
+    background-color: #16479d;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+    padding: 0.5em 0.8em;
+    border-radius: 5px;
+    border: 2px solid #16479d;
+    margin-top: 0;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: #16479d;
 }
 
 .pet_container {
